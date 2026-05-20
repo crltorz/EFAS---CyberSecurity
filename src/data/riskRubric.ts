@@ -8,7 +8,6 @@ export type Indicator = {
   id: string;
   label: string;
   description: string;
-  whyItMatters?: string;
   weight: number;
   severity: 'low' | 'medium' | 'high' | 'critical';
   source: {
@@ -69,8 +68,6 @@ export const indicators: Indicator[] = [
   label: 'Credential or OTP request',
   description:
   'Message asks for OTP, MPIN, PIN, password, CVV, or account verification details. Legitimate institutions never request these.',
-  whyItMatters:
-  'Real banks and e-wallets have your data already — they never need to ask. Anyone who does is impersonating them.',
   weight: 30,
   severity: 'critical',
   source: {
@@ -92,8 +89,6 @@ export const indicators: Indicator[] = [
   label: 'Suspicious or lookalike URL',
   description:
   'Link contains hyphenated brand names, unusual TLDs, or domain patterns associated with phishing.',
-  whyItMatters:
-  'Scammers use fake websites that look real to steal your login details when you try to sign in.',
   weight: 25,
   severity: 'high',
   source: {
@@ -120,8 +115,6 @@ export const indicators: Indicator[] = [
   label: 'Brand impersonation via unofficial channel',
   description:
   'Message claims to be from a known institution (bank, e-wallet, courier, agency) but uses SMS or messaging app instead of official channels.',
-  whyItMatters:
-  'Official institutions use verified sender IDs, not regular mobile numbers or messaging apps, for critical alerts.',
   weight: 15,
   severity: 'high',
   source: {
@@ -143,8 +136,6 @@ export const indicators: Indicator[] = [
   label: 'Urgency or threat tactics',
   description:
   'Language designed to panic the recipient into acting without verifying. A core social-engineering technique.',
-  whyItMatters:
-  "Scammers try to panic you into acting quickly so you don't have time to think or verify their claims.",
   weight: 15,
   severity: 'high',
   source: {
@@ -166,8 +157,6 @@ export const indicators: Indicator[] = [
   label: 'Money transfer or fee request',
   description:
   'Asks for padala, deposit, release fee, processing fee, or transfer to a personal account.',
-  whyItMatters:
-  "Legitimate organizations don't ask you to send money to personal accounts or pay upfront fees to claim something.",
   weight: 20,
   severity: 'high',
   source: {
@@ -189,8 +178,6 @@ export const indicators: Indicator[] = [
   label: 'Generic, non-personalized greeting',
   description:
   'Uses "Dear Customer", "Hello friend", or similar instead of your real name — a sign of mass-sent phishing.',
-  whyItMatters:
-  "Real companies know your name. Mass-sent scam messages use generic greetings because they don't know who you are.",
   weight: 5,
   severity: 'low',
   source: {
@@ -212,8 +199,6 @@ export const indicators: Indicator[] = [
   label: 'Matches known PH scam template',
   description:
   'Contains phrases documented in PNP-ACG bulletins on circulating scam SMS — relative-in-distress, parcel pickup, prize claim, etc.',
-  whyItMatters:
-  'This exact message format has been reported to authorities as part of an active scam campaign.',
   weight: 25,
   severity: 'critical',
   source: {
@@ -235,8 +220,6 @@ export const indicators: Indicator[] = [
   label: 'Non-HTTPS or IP-based URL',
   description:
   'Link uses http:// instead of https://, or points to a raw IP address — both unusual for legitimate services.',
-  whyItMatters:
-  'Secure websites use HTTPS. Links without it or using raw IP addresses are highly suspicious and often malicious.',
   weight: 10,
   severity: 'medium',
   source: {
@@ -257,8 +240,6 @@ export const indicators: Indicator[] = [
   label: 'Shortened URL',
   description:
   'Uses a URL shortener that hides the true destination — common in phishing campaigns.',
-  whyItMatters:
-  "Scammers hide their fake websites behind short links so you can't see where you're actually going before you click.",
   weight: 10,
   severity: 'medium',
   source: {
@@ -280,8 +261,6 @@ export const indicators: Indicator[] = [
   label: 'Grammar / formatting anomalies',
   description:
   'Excessive capitalization, repeated punctuation, or unusual character substitutions — common in mass-produced scam messages.',
-  whyItMatters:
-  'Official communications are proofread. Excessive capitalization and symbols are used by scammers to bypass spam filters.',
   weight: 5,
   severity: 'low',
   source: {
@@ -300,8 +279,6 @@ export const indicators: Indicator[] = [
   label: 'Investment or quick-profit lure',
   description:
   'Promises guaranteed returns, doubling money, fixed daily ROI, or "limited slot" investment opportunities — all hallmarks of Ponzi and HYIP schemes.',
-  whyItMatters:
-  "If an investment guarantees high returns with zero risk, it's a scam. Real investments always carry risk.",
   weight: 25,
   severity: 'critical',
   source: {
@@ -323,8 +300,6 @@ export const indicators: Indicator[] = [
   label: 'Romance / emotional manipulation pattern',
   description:
   'Sudden expressions of love, claims of being stuck overseas, or requests for emergency money tied to a romantic relationship — classic romance-scam indicators.',
-  whyItMatters:
-  'Scammers build fake relationships online to eventually ask for money for "emergencies" or travel.',
   weight: 20,
   severity: 'high',
   source: {
@@ -346,8 +321,6 @@ export const indicators: Indicator[] = [
   label: 'Suspicious job or task-earning offer',
   description:
   'Job or income offers requiring an upfront fee, promising unrealistic earnings, or recruiting via Telegram/WhatsApp — classic task-scam and pyramid-recruitment indicators.',
-  whyItMatters:
-  'Legitimate employers pay you for your work. They never ask you to pay a fee or deposit to start working.',
   weight: 20,
   severity: 'high',
   source: {
@@ -369,8 +342,6 @@ export const indicators: Indicator[] = [
   label: 'Personal e-wallet or account padala request',
   description:
   'Asks the recipient to send money to a personal GCash, Maya, or bank account number — a common laundering pattern. Legitimate merchants and agencies use business accounts.',
-  whyItMatters:
-  'Official businesses use corporate accounts. Asking to send money to a personal GCash or bank account is a major red flag.',
   weight: 20,
   severity: 'high',
   source: {
@@ -394,8 +365,6 @@ export const indicators: Indicator[] = [
   label: 'Obfuscated brand or word (leet substitution)',
   description:
   'Substitutes digits or symbols for letters in brand names ("B1tcoin", "P@yp@l", "G-c4sh") — a known filter-evasion tactic.',
-  whyItMatters:
-  'Scammers replace letters with numbers (like "B1tcoin") to sneak past automated security filters that block scams.',
   weight: 10,
   severity: 'medium',
   source: {
@@ -417,8 +386,6 @@ export const indicators: Indicator[] = [
   label: 'Typosquatted brand domain',
   description:
   'A domain that mimics a known brand by inserting hyphens, extra subdomains, or visually similar tokens (e.g. "gcash-ph-secure.com", "bdo-online.net.ph"). Legitimate institutions never operate from these domains.',
-  whyItMatters:
-  'Scammers register website names that are just one or two letters off from the real thing to trick you into trusting them.',
   weight: 25,
   severity: 'critical',
   source: {
@@ -440,8 +407,6 @@ export const indicators: Indicator[] = [
   label: 'Random 11-digit mobile sender',
   description:
   'Message originates from a personal-style 09xxxxxxxxx mobile number while claiming to represent a bank, e-wallet, or government agency. Real institutions use registered short codes or verified Sender IDs.',
-  whyItMatters:
-  'Banks and government agencies use official short codes or registered names, not regular 11-digit mobile numbers.',
   weight: 10,
   severity: 'medium',
   source: {
@@ -466,8 +431,6 @@ export const indicators: Indicator[] = [
   label: 'Brand claim from free-email provider',
   description:
   'Message or email purports to be from a bank, e-wallet, or government agency but uses a gmail.com, yahoo.com, or hotmail.com return address. Legitimate institutions only send from their own corporate domain.',
-  whyItMatters:
-  'Real institutions use their own corporate email addresses (like @bdo.com.ph), never free services like Gmail or Yahoo.',
   weight: 20,
   severity: 'high',
   source: {
@@ -487,82 +450,6 @@ export const indicators: Indicator[] = [
     );
     const triggered = !!m && claimsInstitution;
     return { triggered, evidence: m };
-  }
-},
-{
-  id: 'telegram_whatsapp_redirect',
-  label: 'Redirect to encrypted messenger',
-  description:
-  'Message redirects you to Telegram or WhatsApp groups, channels, or handles.',
-  whyItMatters:
-  "Scammers move victims to encrypted apps like Telegram or WhatsApp where they can't be easily tracked or moderated.",
-  weight: 15,
-  severity: 'high',
-  source: {
-    name: 'PNP-ACG CS Scams Tracker',
-    citation:
-    'PNP-ACG advisories note that task and investment scammers frequently migrate victims from SMS or Facebook to encrypted messaging apps (Telegram, WhatsApp) to evade platform moderation and tracking.',
-    url: 'https://acg.pnp.gov.ph/category/cs-scams/'
-  },
-  detect: (t) => {
-    const hasLink =
-    /\b(t\.me\/|telegram\.me\/|wa\.me\/|chat\.whatsapp\.com\/|@[a-z0-9_]{4,})\b/i.test(
-      t
-    );
-    const hasAction =
-    /\b(join|sumali|group|channel|admin|message|chat)\b/i.test(t);
-    const m = hasLink ?
-    t.match(
-      /\b(t\.me\/|telegram\.me\/|wa\.me\/|chat\.whatsapp\.com\/|@[a-z0-9_]{4,})\b/i
-    )?.[0] :
-    undefined;
-    return { triggered: hasLink && hasAction, evidence: m };
-  }
-},
-{
-  id: 'task_earning_language',
-  label: 'Task-earning or micro-task language',
-  description:
-  'Mentions small tasks, "tig-piso", liking/rating for commission, or easy tasks.',
-  whyItMatters:
-  'Task scams start by paying you small amounts to build trust, then eventually trap you into paying large "deposits" to continue.',
-  weight: 15,
-  severity: 'high',
-  source: {
-    name: 'DOLE & PNP-ACG Advisories',
-    citation:
-    'DOLE and PNP-ACG have issued multiple warnings regarding "task scams" where victims are promised small commissions (e.g., "tig-piso") for liking videos or rating products, which later escalate into advance-fee fraud.',
-    url: 'https://www.dole.gov.ph/'
-  },
-  detect: (t) => {
-    const m = findMatch(
-      t,
-      /\b(tig[- ]?piso|tig[- ]?singkong|piso[- ]?piso|small\s+task|easy\s+task|commission\s+per\s+task|like\s+and\s+earn|rate\s+and\s+earn|review\s+task|merchant\s+task|training\s+task)\b/i
-    );
-    return { triggered: !!m, evidence: m };
-  }
-},
-{
-  id: 'mule_account_language',
-  label: 'Money mule recruitment',
-  description:
-  'Asks to use, rent, or borrow your bank or e-wallet account to process payments.',
-  whyItMatters:
-  'Letting someone use your account to receive money makes you a "money mule" and legally liable for money laundering under Philippine law.',
-  weight: 20,
-  severity: 'high',
-  source: {
-    name: 'BSP AFASA (RA 12010) IRRs',
-    citation:
-    'The Anti-Financial Account Scamming Act (AFASA) explicitly criminalizes acting as a money mule. Scammers recruit mules by offering commissions to "rent" or "borrow" verified GCash or bank accounts to launder stolen funds.',
-    url: 'https://www.bsp.gov.ph/Regulations/Banking%20Laws/AFASA-Booklet-with-IRRs.pdf'
-  },
-  detect: (t) => {
-    const m = findMatch(
-      t,
-      /\b(use\s+your\s+account|rent\s+your\s+gcash|pahiramin\s+mo\s+(ang\s+)?gcash|lend\s+me\s+your\s+account|process\s+payment\s+through\s+your|commission\s+for\s+using\s+your|gamitin\s+natin\s+(ang\s+)?account\s+mo)\b/i
-    );
-    return { triggered: !!m, evidence: m };
   }
 }];
 

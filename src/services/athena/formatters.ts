@@ -185,15 +185,17 @@ export function formatVerificationReport(
   bandActions[rubric.band].forEach((a, i) => lines.push(`   ${i + 1}. ${a}`));
   lines.push('');
 
-  lines.push(L('7. REPORTING CHANNELS', '7. REPORTING CHANNELS'));
-  lines.push(
-    `   PNP-ACG (24/7): ${PNP_ACG_PHONE} | https://${PNP_ACG_URL}`
-  );
-  lines.push('   DICT NCERT: 1326 | https://www.ncert.gov.ph/');
-  lines.push('   NBI Cybercrime: (02) 8523-8231');
-  lines.push('   CERT-PH phishing: report@cert.gov.ph');
-  lines.push('   NTC SMS spam: forward to 7726');
-  lines.push('');
+  if (rubric.band !== 'low') {
+    lines.push(L('7. REPORTING CHANNELS', '7. REPORTING CHANNELS'));
+    lines.push(
+      `   PNP-ACG (24/7): ${PNP_ACG_PHONE} | https://${PNP_ACG_URL}`
+    );
+    lines.push('   DICT NCERT: 1326 | https://www.ncert.gov.ph/');
+    lines.push('   NBI Cybercrime: (02) 8523-8231');
+    lines.push('   CERT-PH phishing: report@cert.gov.ph');
+    lines.push('   NTC SMS spam: forward to 7726');
+    lines.push('');
+  }
 
   lines.push(
     L(

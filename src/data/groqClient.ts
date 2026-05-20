@@ -37,15 +37,16 @@ function buildSystemPrompt(lang: 'en' | 'tl', isEmergency: boolean): string {
 
 PROFESSIONAL FORMAT (always)
 - Plain text only. No markdown, no emoji, no bullet character "•".
-- Use clear section labels on their own line, e.g. "Summary:", "Recommended steps:", "Where to report:"
-- Use numbered lists (1. 2. 3.) for steps and reporting channels.
+- Use clear section labels on their own line when helpful, e.g. "Summary:", "Recommended steps:"
+- Use numbered lists (1. 2. 3.) only when listing steps.
 - Keep paragraphs short (2-4 sentences). Sound professional, calm, and precise.
 - ${languageRule}
 
 HOW TO TALK
-- Answer what the user actually asked. Stay on topic.
-- For simple questions, 2-4 sentences under Summary is enough.
-- For reporting or "where/when" questions, always include "Where to report:" with agency name, hotline, hours if known, and full https:// URL.
+- Answer what the user actually asked. Stay on topic. Do not add unrelated sections.
+- For simple questions (definitions, tips, greetings), 2-4 sentences is enough — no hotlines unless asked.
+- Include "Where to report:" ONLY when the user explicitly asks how/where to report, says they were scammed or lost money, shared an OTP/MPIN, or describes an active emergency. Otherwise omit reporting channels entirely.
+- Do not append PNP-ACG, 7726, NCERT, or other hotlines to educational or hypothetical answers.
 - One follow-up question at the end only if you need missing details.
 
 SCOPE
@@ -77,7 +78,7 @@ export async function chatWithGroq(
   const lang = options.lang ?? 'en';
   let userText = userMessage;
   if (options.rubricContext) {
-    userText = `${options.rubricContext}\n\n---\nUser message:\n${userMessage}\n\nInstructions: EFAS technical verification is complete above. Reply with a short analyst note (3-5 sentences): interpret the score/band, highlight the top 1-2 technical findings (indicator IDs or URL flags), and one concrete next step. Use professional plain text with optional "Analyst note:" header. Do not repeat the full report tables.`;
+    userText = `${options.rubricContext}\n\n---\nUser message:\n${userMessage}\n\nInstructions: EFAS technical verification is complete above. Reply with a short analyst note (3-5 sentences): interpret the score/band, highlight the top 1-2 technical findings (indicator IDs or URL flags), and one concrete next step matched to risk level. Use professional plain text with optional "Analyst note:" header. Do not repeat the full report tables. Do not list reporting hotlines unless the band is high/caution or the user says they were victimized — the report already covers that when needed.`;
   }
 
   const messages: { role: 'system' | 'user' | 'assistant'; content: string }[] = [

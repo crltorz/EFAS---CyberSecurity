@@ -1,14 +1,24 @@
 import React from 'react';
+import { Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { EfasLogo } from './EfasLogo';
 export function Footer() {
   return (
     <footer className="bg-black border-t border-white/10 py-16 mt-auto">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="mb-5 group inline-flex">
-              <EfasLogo className="text-xl" />
+            <Link to="/" className="flex items-center gap-2.5 mb-5 group">
+              <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                <div className="absolute inset-[3px] rounded-full bg-black flex items-center justify-center">
+                  <Shield
+                    className="w-3.5 h-3.5 text-cyan-300"
+                    strokeWidth={2.5} />
+                  
+                </div>
+              </div>
+              <span className="font-heading font-bold text-xl text-white tracking-tight">
+                EFAS
+              </span>
             </Link>
             <p className="text-slate-400 text-sm max-w-md leading-relaxed">
               Expert for Awareness and Security. We craft real-time cyber-safety
